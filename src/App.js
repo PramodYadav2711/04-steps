@@ -12,13 +12,14 @@ export default function App() {
 
   function handlePrevious() {
     if (step > 1) {
-      setStep(step - 1);
+      // we should use callback function to update state based on current state instead of directly using value.
+      setStep((s) => s - 1);
     }
   }
 
   function handleNext() {
     if (step < 3) {
-      setStep(step + 1);
+      setStep((s) => s + 1);
     }
   }
 
@@ -26,7 +27,7 @@ export default function App() {
     // using react fragment (<>) instead of <div> tag
     <>
       {/* using (!isOpen) as a toggle */}
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button className="close" onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
       {isOpen && (
